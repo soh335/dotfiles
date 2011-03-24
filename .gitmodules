@@ -76,3 +76,6 @@
 [submodule ".vim/bundle/vimproc"]
 	path = .vim/bundle/vimproc
 	url = git://github.com/Shougo/vimproc.git
+[submodule ".vim/bundle/vim-sudo"]
+	path = .vim/bundle/vim-sudo
+	url = git://github.com/vim-scripts/sudo.vim.git
