@@ -1,0 +1,3 @@
+[submodule ".vim/bundle/echodoc"]
+	path = .vim/bundle/echodoc
+	url = git://github.com/Shougo/echodoc.git
