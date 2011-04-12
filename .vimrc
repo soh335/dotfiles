@@ -430,6 +430,7 @@ endfunction
 
 " {{{ unite
 nnoremap <silent> <space>ff :<C-u>Unite file -buffer-name=files<Cr>
+nnoremap <silent> <space>ff :<C-u>Unite file -buffer-name=files<Cr>
 nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file -buffer-name=files<Cr>
 nnoremap <silent> <space>fb :<C-u>Unite buffer<Cr>
 nnoremap <silent> <space>fm :<C-u>Unite file_mru<Cr>
