@@ -1,16 +1,22 @@
 "set t_Co=256
 " setting{{{
+set nocompatible
+filetype off
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+if filereadable($HOME."/.vim/vundlerc")
+  source $HOME/.vim/vundlerc
+endif
+
 filetype plugin indent on
 syntax on
-
-call pathogen#runtime_append_all_bundles() 
 
 set backspace=indent,eol,start 
 highlight Pmenu ctermbg = 5
 highlight PmenuSel ctermbg = 1
 highlight PMenuSbar ctermbg = 4
 highlight StatusLine ctermbg=1
-set nocompatible
 set directory-=.
 set iminsert=0
 set imsearch=0 
@@ -224,7 +230,9 @@ au BufNewFile,BufRead *.ctp setfiletype php
 
 au BufNewFile,BufRead *.tt setfiletype html
 au BufNewFile,BufRead *.mt setfiletype html
+au BufNewFile,BufRead *.ejs setfiletype html
 au BufNewFile,BufRead *.psgi setfiletype perl
+au BufNewFile,BufRead *.kml setfiletype xml
 
 "smartchr plugin
 "inoremap <expr> = smartchr#one_of(' = ', ' == ', ' === ', '=')
@@ -271,6 +279,7 @@ command! WordCount :call WordCount()
 "{{{ symfony.vim map
 let g:vim_symfony_default_search_action_top_direction = 1
 let g:vim_symfony_autocmd_version = 1
+let g:vim_symfony_auto_search_root_dirctory = 1
 "let g:vim_symfony_fuf = 1
 nnoremap <silent><space>sv :<C-u>Sview<CR>
 nnoremap <silent><space>sa :<C-u>Saction<CR>
@@ -309,7 +318,7 @@ function! CompileAndView()
   endif
   call Tex_ViewLaTeX()
 endfunction
-autocmd FileType tex nnoremap <leader>r :call CompileAndView()<CR>
+"autocmd FileType tex nnoremap <leader>r :call CompileAndView()<CR>
 "}}}
 
 "{{{for quickfix mapping
@@ -375,12 +384,13 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
 source $VIMRUNTIME/macros/matchit.vim
 let g:filetype_m = 'objc'
 
-let g:quickrun_config = {
+let b:quickrun_config = {
                         \ 'objc': {
                         \'command': 'gcc',
                         \'exec': ['%c %s -o %s:p:r -framework Cocoa', '%s:p:r %a', 'rm -f %s:p:r'],
                         \'tempfile': '{tempname()}.c',
-                        \}
+                        \},
+                        \ 'runner': 'vimproc'
                         \}
 
 " Load settings for each location.
@@ -429,11 +439,12 @@ endfunction
 "
 
 " {{{ unite
-nnoremap <silent> <space>ff :<C-u>Unite file -buffer-name=files<Cr>
+" call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
+
 nnoremap <silent> <space>ff :<C-u>Unite file -buffer-name=files<Cr>
 nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file -buffer-name=files<Cr>
 nnoremap <silent> <space>fb :<C-u>Unite buffer<Cr>
-nnoremap <silent> <space>fm :<C-u>Unite file_mru<Cr>
+nnoremap <silent> <space>fm :<C-u>Unite file_mru -buffer-name=files<Cr>
 nnoremap <silent> <space>rp :<C-u>Unite ref/phpmanual<Cr>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
@@ -445,5 +456,9 @@ let g:unite_enable_start_insert = 1
 " }}}
 "
 command! -nargs=1 ChangeIndent :setl ts=<args> |setl sw=<args>
+
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 
 source $HOME/.vimrc.local
