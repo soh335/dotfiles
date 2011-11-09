@@ -461,4 +461,8 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+let perl_fold = 1
+let perl_nofold_packages = 1
+let perl_nofold_subs = 1
+
 source $HOME/.vimrc.local
