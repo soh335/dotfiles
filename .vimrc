@@ -450,10 +450,10 @@ autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   nmap <buffer> <Esc><Esc> <Plug>(unite_exit)
   imap <buffer> <Esc><Esc> <plug>(unite_exit)
-  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-  inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+  nnoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
+  inoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
+  nnoremap <silent><buffer><expr> <C-j> unite#do_action('split')
+  inoremap <silent><buffer><expr> <C-j> unite#do_action('split')
 endfunction
 let g:unite_source_file_mru_limit = 200
 let g:unite_enable_start_insert = 1
