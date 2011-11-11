@@ -469,4 +469,6 @@ let perl_fold = 1
 let perl_nofold_packages = 1
 let perl_nofold_subs = 1
 
+let g:gist_open_browser_after_post = 1
+
 source $HOME/.vimrc.local
