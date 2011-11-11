@@ -59,6 +59,7 @@ set ambiwidth=double
 set completeopt=menuone,preview
 set cmdwinheight=3
 set modeline
+set notagbsearch
 if has('persistent_undo')
   set undodir=./.vimundo,~/.vimundo
 endif
