@@ -35,6 +35,7 @@ alias ls='/bin/ls -GF'
 alias ll='/bin/ls -FlshG'
 alias lla='/bin/ls -FlashG'
 alias alc='w3m "http://eow.alc.co.jp/function/UTF-8/?ref=sa" | less +37'
+alias pad="plackup -MPlack::App::Directory -e 'Plack::App::Directory->new->to_app'"
 
 #history
 setopt hist_ignore_dups #重複を除く
