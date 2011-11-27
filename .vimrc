@@ -472,4 +472,14 @@ let perl_nofold_subs = 1
 
 let g:gist_open_browser_after_post = 1
 
+" {{{
+" for tex 
+function! s:subsitute_interpunction()
+  silent execute "try | %s/。/．/g | catch | endtry"
+  silent execute "try | %s/、/，/g | catch | endtry"
+endfunction
+
+autocmd! BufWrite *.tex call s:subsitute_interpunction()
+" }}}
+
 source $HOME/.vimrc.local
