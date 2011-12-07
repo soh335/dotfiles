@@ -234,6 +234,7 @@ au BufNewFile,BufRead *.mt setfiletype html
 au BufNewFile,BufRead *.ejs setfiletype html
 au BufNewFile,BufRead *.psgi setfiletype perl
 au BufNewFile,BufRead *.kml setfiletype xml
+au BufNewFile,BufRead *.r set filetype=r
 
 "smartchr plugin
 "inoremap <expr> = smartchr#one_of(' = ', ' == ', ' === ', '=')
