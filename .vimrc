@@ -386,15 +386,6 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
 source $VIMRUNTIME/macros/matchit.vim
 let g:filetype_m = 'objc'
 
-let b:quickrun_config = {
-                        \ 'objc': {
-                        \'command': 'gcc',
-                        \'exec': ['%c %s -o %s:p:r -framework Cocoa', '%s:p:r %a', 'rm -f %s:p:r'],
-                        \'tempfile': '{tempname()}.c',
-                        \},
-                        \ 'runner': 'vimproc'
-                        \}
-
 " Load settings for each location.
 "augroup vimrc-local
 "  autocmd!
