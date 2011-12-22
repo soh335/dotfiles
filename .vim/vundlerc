@@ -28,9 +28,12 @@ Bundle 'Shougo/vimshell'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-jp/vimdoc-ja'
 Bundle 'h1mesuke/vim-alignta'
+Bundle 't9md/vim-quickhl'
+Bundle 'mattn/webapi-vim'
 
 Bundle 'git@github.com:soh335/vim-ref-jquery.git'
 Bundle 'git@github.com:soh335/vim-ref-pman.git'
 Bundle 'git@github.com:soh335/vim-symfony.git'
+Bundle 'git@github.com:soh335/unite-hatenabookmark.git'
 
 " vim: set filetype=vim:
