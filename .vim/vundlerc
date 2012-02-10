@@ -1,6 +1,7 @@
 Bundle 'Shougo/echodoc'
 Bundle 'mattn/gist-vim'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tsukkee/lingr-vim'
 Bundle 'tyru/open-browser.vim'
