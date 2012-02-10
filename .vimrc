@@ -441,6 +441,7 @@ nnoremap <silent> <space>ff :<C-u>Unite file -buffer-name=files<Cr>
 nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file -buffer-name=files<Cr>
 nnoremap <silent> <space>fb :<C-u>Unite buffer<Cr>
 nnoremap <silent> <space>fo :<C-u>Unite outline<Cr>
+nnoremap <silent> <space>fd :<C-u>Unite directory_mru -default-action=lcd -buffer-name=directory<Cr>
 nnoremap <silent> <space>fm :<C-u>Unite file_mru -buffer-name=files<Cr>
 nnoremap <silent> <space>rp :<C-u>Unite ref/perldoc -buffer-name=ref<Cr>
 autocmd FileType unite call s:unite_my_settings()
