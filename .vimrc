@@ -19,7 +19,7 @@ highlight PMenuSbar ctermbg = 4
 highlight StatusLine ctermbg=1
 set directory-=.
 set iminsert=0
-set imsearch=0 
+set imsearch=0
 set imdisable
 set textwidth=0
 set nobackup
@@ -36,7 +36,8 @@ set smartcase
 set wrapscan
 set incsearch
 "set listchars=tab:\\ 
-set nolist
+set listchars=tab:>-,trail:_
+set list
 set showcmd
 set showmatch
 set showmode
@@ -102,7 +103,7 @@ command! WSjis w ++enc=cp932 | e
 command! WJis w ++enc=iso-2022-jp | e
 
 "search in visual mode by *
-vnoremap * y/<C-r>0<CR> 
+vnoremap * y/<C-r>0<CR>
 
 inoremap <C-w>  <C-g>u<C-w>
 inoremap <C-u>  <C-g>u<C-u>
@@ -347,7 +348,8 @@ let g:ref_phpmanual_cmd = 'w3m -dump %s'
 "let g:ref_jquery_path = 
 let g:ref_jquery_cmd = 'w3m -dump %s'
 let g:ref_alc_cmd = 'w3m -dump %s'
-nnoremap <space>ra :<C-u>Ref alc 
+"nnoremap <space>ra :<C-u>Ref alc 
+nnoremap <expr> <space>A ':Ref alc ' . expand('<cword>') . '<CR>'
 nnoremap <space>rp :<C-u>Ref phpmanual 
 " }}}
 
@@ -376,10 +378,10 @@ function! s:Vimgrepdo(pattern, file, cmd)
 endfunction
 
 let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_ignore_case = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = 'fuf'
-let g:neocomplcache_manual_completion_start_length = 5
+let g:neocomplcache_manual_completion_start_length = 3
 let g:neocomplcache_enable_auto_delimiter = 0
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -438,8 +440,9 @@ endfunction
 nnoremap <silent> <space>ff :<C-u>Unite file -buffer-name=files<Cr>
 nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file -buffer-name=files<Cr>
 nnoremap <silent> <space>fb :<C-u>Unite buffer<Cr>
+nnoremap <silent> <space>fo :<C-u>Unite outline<Cr>
 nnoremap <silent> <space>fm :<C-u>Unite file_mru -buffer-name=files<Cr>
-nnoremap <silent> <space>rp :<C-u>Unite ref/phpmanual<Cr>
+nnoremap <silent> <space>rp :<C-u>Unite ref/perldoc -buffer-name=ref<Cr>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   nmap <buffer> <Esc><Esc> <Plug>(unite_exit)
@@ -476,5 +479,10 @@ endfunction
 
 autocmd! BufWrite *.tex call s:subsitute_interpunction()
 " }}}
+
+"{{{
+"for quickhl
+command! QuickhlAddLastPat execute "QuickhlAdd!" . @/
+"}}}
 
 source $HOME/.vimrc.local
