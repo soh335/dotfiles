@@ -389,19 +389,6 @@ imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>
 source $VIMRUNTIME/macros/matchit.vim
 let g:filetype_m = 'objc'
 
-" Load settings for each location.
-"augroup vimrc-local
-"  autocmd!
-"  autocmd VimEnter,BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
-"augroup END
-
-function! s:vimrc_local(loc)
-  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
-  for i in reverse(filter(files, 'filereadable(v:val)'))
-    source `=i`
-  endfor
-endfunction
-
 " :HighlightWith {filetype} ['a 'b] XXX: Don't work in some case."{{{
 command! -nargs=+ -range=% HighlightWith <line1>,<line2>call s:highlight_with(<q-args>)
 xnoremap [Space]h :HighlightWith<Space><C-f>
