@@ -36,6 +36,7 @@ Bundle 'kana/vim-gf-user'
 Bundle 'kana/vim-gf-diff'
 Bundle 'petdance/vim-perl'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'kana/vim-submode'
 
 Bundle 'git@github.com:soh335/vim-ref-jquery.git'
 Bundle 'git@github.com:soh335/vim-ref-pman.git'

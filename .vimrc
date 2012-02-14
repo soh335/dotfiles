@@ -443,7 +443,19 @@ endfunction
 let g:unite_source_file_mru_limit = 200
 let g:unite_enable_start_insert = 1
 " }}}
-"
+
+
+" {{{ submode
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+" }}}
 command! -nargs=1 ChangeIndent :setl ts=<args> |setl sw=<args>
 
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
