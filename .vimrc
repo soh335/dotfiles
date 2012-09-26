@@ -431,6 +431,7 @@ nnoremap <silent> <space>fd :<C-u>Unite directory_mru -default-action=lcd -buffe
 nnoremap <silent> <space>fm :<C-u>Unite file_mru -buffer-name=files<Cr>
 nnoremap <silent> <space>fi :<C-u>Unite file_include -buffer-name=file_include<Cr>
 nnoremap <silent> <space>fr :<C-u>Unite file_rec/async -buffer-name=files<Cr>
+nnoremap <silent> <space>fj :<C-u>Unite jump -buffer-name=jump<Cr>
 nnoremap <silent> <space>rp :<C-u>Unite ref/perldoc -buffer-name=ref<Cr>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
