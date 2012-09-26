@@ -422,8 +422,8 @@ endfunction
 " {{{ unite
 " call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
 
-nnoremap <silent> <space>ff :<C-u>Unite file -buffer-name=files<Cr>
-nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file -buffer-name=files<Cr>
+nnoremap <silent> <space>ff :<C-u>Unite file file/new -buffer-name=files<Cr>
+nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file file/new -buffer-name=files<Cr>
 nnoremap <silent> <space>fb :<C-u>Unite buffer<Cr>
 nnoremap <silent> <space>fo :<C-u>Unite outline<Cr>
 nnoremap <silent> <space>fd :<C-u>Unite directory_mru -default-action=lcd -buffer-name=directory<Cr>
