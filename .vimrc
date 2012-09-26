@@ -484,6 +484,12 @@ autocmd! BufWrite *.tex call s:subsitute_interpunction()
 "{{{
 "for quickhl
 command! QuickhlAddLastPat execute "QuickhlAdd!" . @/
+nmap <Space>m <Plug>(quickhl-toggle)
+xmap <Space>m <Plug>(quickhl-toggle)
+nmap <Space>M <Plug>(quickhl-reset)
+xmap <Space>M <Plug>(quickhl-reset)
+"}}}
+"
 "}}}
 
 source $HOME/.vimrc.local
