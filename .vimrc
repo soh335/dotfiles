@@ -240,32 +240,6 @@ au BufNewFile,BufRead *.r set filetype=r
 "smartchr plugin
 "inoremap <expr> = smartchr#one_of(' = ', ' == ', ' === ', '=')
 
-
-"{{{
-"Buffer全部から検索して結果をQuickFixに出力する
-"http://ogijun.g.hatena.ne.jp/secondlife/20080310/1205128105
-function! BufferGrep(word)
-  if exists("s:hasqf")
-    silent ccl
-  endif
-  cexpr '' " quickfix を空に
-  let current = bufnr('%')
-  "silent exec ':bufdo | try | vimgrepadd '.a:word.' % | catch | endtry'
-  silent exec ':bufdo | try | vimgrepadd '.a:word.' % | catch | echo "hoge" |endtry'
-  silent exec ':b '. current
-  if !empty(getqflist()) 
-    silent cw
-    let s:hasqf = 1
-  else 
-    echohl ErrorMsg
-    echomsg "no pattern" a:word
-    echohl None
-    return
-  endif
-endfunction
-command! -nargs=1 BufferGrep :call BufferGrep(<f-args>)
-"}}}
-
 "{{{
 "http://subtech.g.hatena.ne.jp/secondlife/20090503/1241321929
 function! WordCount()
@@ -363,17 +337,6 @@ nnoremap ,d :call PhpDocSingle()<CR>
 
 "nmap <silent> :  <Plug>(cmdbuf-open-:)
 let plugin_dicwin_disable = 1
-
-command! -nargs=+ Vimgrepdo :call s:Vimgrepdo(<f-args>)
-
-function! s:Vimgrepdo(pattern, file, cmd)
-  execute 'vimgrep '.a:pattern.' '.a:file
-  for d in getqflist()
-    edit bufname(d.bufnr)
-    execute cmd
-  endfor
-  cexpr '' " quickfix を空に
-endfunction
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 1
