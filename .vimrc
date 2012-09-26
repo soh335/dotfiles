@@ -347,6 +347,7 @@ command! CreateDirAndWrite :call s:CreateDirAndWrite()
 let g:ref_phpmanual_cmd = 'w3m -dump %s'
 "let g:ref_jquery_path = 
 let g:ref_jquery_cmd = 'w3m -dump %s'
+let g:ref_source_webdict_cmd = 'w3m -dump %s'
 nnoremap <space>rp :<C-u>Ref phpmanual 
 " }}}
 
