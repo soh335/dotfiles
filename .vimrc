@@ -347,9 +347,6 @@ command! CreateDirAndWrite :call s:CreateDirAndWrite()
 let g:ref_phpmanual_cmd = 'w3m -dump %s'
 "let g:ref_jquery_path = 
 let g:ref_jquery_cmd = 'w3m -dump %s'
-let g:ref_alc_cmd = 'w3m -dump %s'
-"nnoremap <space>ra :<C-u>Ref alc 
-nnoremap <expr> <space>A ':Ref alc ' . expand('<cword>') . '<CR>'
 nnoremap <space>rp :<C-u>Ref phpmanual 
 " }}}
 
