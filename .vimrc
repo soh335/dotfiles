@@ -381,15 +381,21 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_manual_completion_start_length = 3
 let g:neocomplcache_enable_auto_delimiter = 0
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.perl = '\h\w->\h\w|\h\w*::'
+
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
 
 source $VIMRUNTIME/macros/matchit.vim
 let g:filetype_m = 'objc'
 
 " :HighlightWith {filetype} ['a 'b] XXX: Don't work in some case."{{{
 command! -nargs=+ -range=% HighlightWith <line1>,<line2>call s:highlight_with(<q-args>)
-xnoremap [Space]h :HighlightWith<Space><C-f>
+xnoremap <space>h :HighlightWith<Space><C-f>
 
 function! s:highlight_with(args) range
   if a:firstline == 1 && a:lastline == line('$')
