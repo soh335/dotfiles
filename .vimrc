@@ -412,12 +412,6 @@ function! s:highlight_with(args) range
 endfunction
 "}}}
 
-" {{{
-autocmd FileType vimshell-less call s:vimshell_less()
-function! s:vimshell_less()
-endfunction
-" }}}
-"
 
 " {{{ unite
 " call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
