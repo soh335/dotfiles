@@ -426,6 +426,7 @@ nnoremap <silent> <space>ff :<C-u>Unite file file/new -buffer-name=files<Cr>
 nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file file/new -buffer-name=files<Cr>
 nnoremap <silent> <space>fb :<C-u>Unite buffer<Cr>
 nnoremap <silent> <space>fo :<C-u>Unite outline<Cr>
+nnoremap <silent> <space>ft :<C-u>Unite tab<Cr>
 nnoremap <silent> <space>fd :<C-u>Unite directory_mru -default-action=lcd -buffer-name=directory<Cr>
 nnoremap <silent> <space>fm :<C-u>Unite file_mru -buffer-name=files<Cr>
 nnoremap <silent> <space>fi :<C-u>Unite file_include -buffer-name=file_include<Cr>
