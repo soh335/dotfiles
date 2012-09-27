@@ -470,18 +470,8 @@ nmap <Space>D <Plug>(textmanip-duplicate-up)
 "}}}
 
 "{{{
-let g:loaded_perl_syntax_checker = 1
-function! SyntaxCheckers_perl_GetLocList()
-  let makeprg = 'perl ' . $HOME . "/.vim/bin/perl_projectlibs.pl"
-  if exists("b:syntastic_perl_lib_dirs")
-    let makeprg .= " " . join(map(b:syntastic_perl_lib_dirs, '"--libdir " . v:val'), " ")
-  endif
-
-  let makeprg .= " " . shellescape(expand("%"))
-  let errorformat =  '%f:%l:%m'
-
-  return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
-endfunction
+" syntastic
+let g:syntastic_perl_efm_program = "perl " . $HOME . "/.vim/bin/perl_projectlibs.pl"
 "}}}
 
 source $HOME/.vimrc.local
