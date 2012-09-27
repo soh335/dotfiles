@@ -17,16 +17,14 @@ my @lines = `perl -cw -M'Project::Libs lib_dirs => [qw/$libs_str/]' $file$args 2
 
 for my $line (@lines) {
 
-    chomp($line);
+    chomp $line;
 
-    if ($line =~ /^(.*)\sat\s(.*)\sline\s(\d+)(\.|,\snear\s\".*\")$/) {
+    if ( $line =~ /^(.*)\sat\s(.*)\sline\s(\d+)(\.|,\snear\s\".*\")$/ ) {
 
         my ($message, $file, $lineno, $rest) = ($1, $2, $3, $4);
-        $message .= $rest if ($rest =~ s/^,//);
+        $message .= $rest if $rest =~ s/^,//;
         print "E:$file:$lineno:$message\n";
 
-    } else {
-        next
-    };
+    }
 
 }
