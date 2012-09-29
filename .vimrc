@@ -470,8 +470,23 @@ nmap <Space>D <Plug>(textmanip-duplicate-up)
 "}}}
 
 "{{{
-" syntastic
-let g:syntastic_perl_efm_program = "perl " . $HOME . "/.vim/bin/perl_projectlibs.pl"
+" watchdog.vim"
+let watchdogs_check_BufWritePost_enable = 1
+let g:quickrun_config = {
+      \ "watchdogs_checker/_" : {
+      \   "hook/close_quickfix/enable_exit" : 1,
+      \   "runner/vimproc/updatetime" : 40
+      \ },
+      \ "watchdogs_checker/perl-projectlibs" : {
+      \   "command" : "perl",
+      \   "exec" : "%c %o -cw -MProject::Libs %s:p",
+      \   "quickfix/errorformat": "%m\ at\ %f\ line\ %l%.%#",
+      \ },
+      \ "perl/watchdogs_checker" : {
+      \   "type": "watchdogs_checker/perl-projectlibs",
+      \ },
+      \}
+call watchdogs#setup(g:quickrun_config)
 "}}}
 
 source $HOME/.vimrc.local
