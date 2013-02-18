@@ -350,7 +350,12 @@ endif
 let g:neocomplcache_omni_patterns.perl = '\h\w->\h\w|\h\w*::'
 
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" http://d.hatena.ne.jp/osyo-manga/20121021/1350749023
+if g:neocomplcache_enable_at_startup
+  imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+endif
+vmap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<Tab>"
 
 
 source $VIMRUNTIME/macros/matchit.vim
