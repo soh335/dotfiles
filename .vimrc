@@ -476,11 +476,16 @@ nmap <Space>D <Plug>(textmanip-duplicate-up)
 
 "{{{
 " watchdog.vim"
-let watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_BufWritePost_enables = {
+      \ "perl" : 1,
+      \ "javascript" :0
+      \ }
+
 let g:quickrun_config = {
       \ "watchdogs_checker/_" : {
       \   "hook/close_quickfix/enable_exit" : 1,
-      \   "runner/vimproc/updatetime" : 40
+      \   "runner/vimproc/updatetime" : 40,
+      \   "hook/back_buffer/enable" : 1,
       \ },
       \ "watchdogs_checker/perl-projectlibs" : {
       \   "command" : "perl",
