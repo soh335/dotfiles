@@ -223,6 +223,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php  set complete+=k~/.vim/dict/php.dict
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType gitcommit setl fileencoding=utf8
 autocmd User Symfony10 setlocal tags+=$HOME/tags/symfony10.tags
 autocmd User Symfony14 setlocal tags+=$HOME/tags/symfony14.tags
 
