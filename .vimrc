@@ -235,6 +235,7 @@ au BufNewFile,BufRead *.tt setfiletype html
 au BufNewFile,BufRead *.mt setfiletype html
 au BufNewFile,BufRead *.ejs setfiletype html
 au BufNewFile,BufRead *.psgi setfiletype perl
+au BufNewFile,BufRead *.t setl filetype=perl
 au BufNewFile,BufRead *.kml setfiletype xml
 au BufNewFile,BufRead *.r set filetype=r
 
