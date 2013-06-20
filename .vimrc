@@ -393,7 +393,8 @@ endfunction
 
 
 " {{{ unite
-" call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
+call unite#custom#substitute('files', '[^~.* ]\ze/', '\0', -100)
+call unite#custom#substitute('files', '/\ze[^~.* ]', '/', -100)
 
 nnoremap <silent> <space>ff :<C-u>Unite file file/new -buffer-name=files<Cr>
 nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file file/new -buffer-name=files<Cr>
