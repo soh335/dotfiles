@@ -410,8 +410,8 @@ nnoremap <silent> <space>rp :<C-u>Unite ref/perldoc -buffer-name=ref<Cr>
 nnoremap <silent> <space>ml :Unite file:<C-r>=g:memolist_path."/"<CR><CR>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-  nmap <buffer> <Esc><Esc> <Plug>(unite_exit)
-  imap <buffer> <Esc><Esc> <plug>(unite_exit)
+  nmap <buffer> <Esc><Esc> <Plug>(unite_all_exit)
+  imap <buffer> <Esc><Esc> <Esc><Plug>(unite_all_exit)
   nnoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
   inoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
   nnoremap <silent><buffer><expr> <C-j> unite#do_action('split')
