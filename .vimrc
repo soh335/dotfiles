@@ -353,12 +353,15 @@ let g:neocomplcache_omni_patterns.perl = '\h\w->\h\w|\h\w*::'
 
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
 
-" http://d.hatena.ne.jp/osyo-manga/20121021/1350749023
-if g:neocomplcache_enable_at_startup
-  imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-endif
-vmap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<Tab>"
-
+let g:neosnippet#snippets_directory = "~/.vim/snippets"
+let g:neosnippet#disable_runtime_snippets = { 'perl' : 1 }
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+ \ "\<Plug>(neosnippet_expand_or_jump)"
+ \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+ \ "\<Plug>(neosnippet_expand_or_jump)"
+ \: "\<TAB>"
 
 source $VIMRUNTIME/macros/matchit.vim
 let g:filetype_m = 'objc'
