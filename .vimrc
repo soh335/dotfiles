@@ -26,9 +26,6 @@ set nobackup
 set history=500
 set ruler
 set expandtab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
 set autoindent
 set smartindent
 set ignorecase
@@ -226,6 +223,9 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType gitcommit setl fileencoding=utf8
 autocmd User Symfony10 setlocal tags+=$HOME/tags/symfony10.tags
 autocmd User Symfony14 setlocal tags+=$HOME/tags/symfony14.tags
+
+autocmd FileType perl setlocal softtabstop=4
+autocmd FileType perl setlocal shiftwidth=4
 
 "for cakephp
 au BufNewFile,BufRead *.thtml setfiletype php
