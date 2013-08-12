@@ -239,6 +239,9 @@ au BufNewFile,BufRead *.t setl filetype=perl
 au BufNewFile,BufRead *.kml setfiletype xml
 au BufNewFile,BufRead *.r set filetype=r
 
+"for golang
+autocmd BufWrite *.go :Fmt
+
 "smartchr plugin
 "inoremap <expr> = smartchr#one_of(' = ', ' == ', ' === ', '=')
 
