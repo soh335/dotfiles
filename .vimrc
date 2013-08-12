@@ -414,6 +414,7 @@ nnoremap <silent> <space>ml :Unite file:<C-r>=g:memolist_path."/"<CR><CR>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   nmap <buffer> <Esc><Esc> <Plug>(unite_all_exit)
+  nmap <buffer> <C-c> <Plug>(unite_redraw)
   imap <buffer> <Esc><Esc> <Esc><Plug>(unite_all_exit)
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
   nnoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
