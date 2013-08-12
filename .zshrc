@@ -69,6 +69,13 @@ setopt list_packed
 # 補完候補表示時などにピッピとビープ音をならないように設定
 setopt nolistbeep
 
+# zaw
+source ~/.zsh/zaw/zaw.zsh
+bindkey '^[@' zaw-cdr
+
+# z
+source ~/.zsh/z/z.sh
+
 function json_dump()
 {
   php -r 'print_r(json_decode(file_get_contents($argv[1]), true));' $1
