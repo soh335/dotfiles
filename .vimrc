@@ -495,7 +495,7 @@ let g:watchdogs_check_BufWritePost_enables = {
 let g:quickrun_config = {
       \ "watchdogs_checker/_" : {
       \   "runner/vimproc/updatetime" : 40,
-      \   "hook/close_quickfix/enable_exit" : 1,
+      \   "outputter/quickfix/open_cmd" : '',
       \   "hook/back_window/enable_exit" : 1,
       \ },
       \ "watchdogs_checker/perl-projectlibs" : {
