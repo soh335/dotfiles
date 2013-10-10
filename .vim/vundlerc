@@ -60,8 +60,6 @@ Bundle 'vim-jp/vital.vim'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'gcmt/plum.vim'
 Bundle 'nanotech/jellybeans.vim'
-"Bundle 'osyo-manga/vim-precious'
-"Bundle 'Shougo/context_filetype.vim'
 Bundle 'mattn/perlvalidate-vim'
 
 Bundle 'git@github.com:soh335/vim-ref-jquery.git'
