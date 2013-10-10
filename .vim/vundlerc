@@ -1,6 +1,6 @@
 Bundle 'Shougo/echodoc'
 Bundle 'mattn/gist-vim'
-Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplete.vim'
 Bundle 'Shougo/neosnippet'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tsukkee/lingr-vim'

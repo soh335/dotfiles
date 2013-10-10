@@ -343,18 +343,21 @@ nnoremap ,d :call PhpDocSingle()<CR>
 "nmap <silent> :  <Plug>(cmdbuf-open-:)
 let plugin_dicwin_disable = 1
 
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_manual_completion_start_length = 3
-let g:neocomplcache_enable_auto_delimiter = 0
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.perl = '\h\w->\h\w|\h\w*::'
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_ignore_case = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#manual_completion_start_length = 3
+let g:neocomplete#enable_auto_delimiter = 0
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"  let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w->\h\w|\h\w*::'
+let g:neocomplete#sources#file_include#exprs = {}
+let g:neocomplete#sources#file_include#exprs.perl =
+                        \ 'fnamemodify(substitute(v:fname, "/", "::", "g"), ":r")'
 
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<BS>"
 
 let g:neosnippet#snippets_directory = "~/.vim/snippets"
 let g:neosnippet#disable_runtime_snippets = { 'perl' : 1 }
