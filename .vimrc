@@ -50,6 +50,8 @@ set modeline
 set notagbsearch
 set clipboard+=unnamed
 
+nnoremap <C-]> g<C-]>
+
 let g:filetype_m = 'objc'
 
 "prompt{{{
@@ -69,201 +71,52 @@ command! WJis w ++enc=iso-2022-jp | e
 " }}}
 
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
 source $VIMRUNTIME/macros/matchit.vim
 
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'Shougo/neocomplete.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-rails'
+Plug 'dannyob/quickfixstatus'
+Plug 'h1mesuke/vim-alignta'
+Plug 'kana/vim-gf-diff'
+Plug 'kana/vim-gf-user'
+Plug 'kana/vim-operator-replace'
+Plug 'kana/vim-operator-user'
+Plug 'kana/vim-textobj-diff'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-fold'
+Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-lastpat'
+Plug 'kana/vim-textobj-user'
+Plug 'mattn/webapi-vim'
+Plug 'motemen/xslate-vim'
+Plug 't9md/vim-textmanip'
+Plug 'thinca/vim-localrc'
+Plug 'thinca/vim-qfreplace'
+Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-ref'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-surround'
+Plug 'vim-jp/vimdoc-ja'
+Plug 'vim-scripts/sudo.vim'
+Plug 'fatih/vim-go'
+Plug 'mrk21/yaml-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-complete' }
 
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_ignore_case = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#enable_auto_delimiter = 0
+call plug#end()
 
-if !exists('g:neocomplete#delimiter_patterns')
-  let g:neocomplete#delimiter_patterns= {}
-endif
-let g:neocomplete#delimiter_patterns.perl = ['.']
+let g:solarized_menu=0
+colorscheme solarized
 
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w->\h\w|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
+let g:ctrlp_map = '<Nop>'
+let g:ctrlp_cmd = 'CtrlP'
+nnoremap <silent> <space>ff :<C-u>CtrlP<CR>
+nnoremap <silent> <space>fm :<C-u>CtrlPMRUFiles<CR>
+nnoremap <silent> <space>fb :<C-u>CtrlPBuffer<CR>
 
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-if !exists('g:neocomplete#sources#file_include#exprs')
-  let g:neocomplete#sources#file_include#exprs = {}
-endif
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
-
-Plugin 'Shougo/neosnippet'
-let g:neosnippet#snippets_directory = "~/.vim/snippets"
-let g:neosnippet#disable_runtime_snippets = { 'perl' : 1 }
-
-Plugin 'Shougo/neomru.vim'
-let g:neomru#time_format = "(%Y/%m/%d %H:%M:%S) "
-let g:neomru#file_mru_limit = 300
-
-Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/unite.vim'
-
-nnoremap <silent> <space>ff :<C-u>Unite file file/new -buffer-name=files<Cr>
-nnoremap <silent> <space>fc :<C-u>UniteWithBufferDir file file/new -buffer-name=files<Cr>
-nnoremap <silent> <space>fb :<C-u>Unite buffer<Cr>
-nnoremap <silent> <space>fo :<C-u>Unite outline<Cr>
-nnoremap <silent> <space>ft :<C-u>Unite tab<Cr>
-nnoremap <silent> <space>fd :<C-u>Unite directory_mru -default-action=lcd -buffer-name=directory<Cr>
-nnoremap <silent> <space>fm :<C-u>Unite file_mru -buffer-name=files<Cr>
-nnoremap <silent> <space>fi :<C-u>Unite file_include -buffer-name=file_include<Cr>
-nnoremap <silent> <space>fr :<C-u>Unite file_rec/async -buffer-name=files<Cr>
-nnoremap <silent> <space>fj :<C-u>Unite jump -buffer-name=jump<Cr>
-nnoremap <silent> <space>rp :<C-u>Unite ref/perldoc -buffer-name=ref<Cr>
-nnoremap <silent> <space>ml :Unite file:<C-r>=g:memolist_path."/"<CR><CR>
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  nmap <buffer> <Esc><Esc> <Plug>(unite_all_exit)
-  nmap <buffer> <C-c> <Plug>(unite_redraw)
-  imap <buffer> <Esc><Esc> <Esc><Plug>(unite_all_exit)
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  nnoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
-  inoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
-  nnoremap <silent><buffer><expr> <C-j> unite#do_action('split')
-  inoremap <silent><buffer><expr> <C-j> unite#do_action('split')
-endfunction
-
-call unite#custom#profile('default', 'context', {
-                        \ 'start_insert': 1,
-                        \ 'cursor_line_highlight' : 'PmenuSel',
-                        \ })
-
-Plugin 'tpope/vim-rails'
-Plugin 'Shougo/vimproc'
-Plugin 'dannyob/quickfixstatus'
-Plugin 'h1mesuke/vim-alignta'
-Plugin 'jceb/vim-hier'
-Plugin 'kana/vim-gf-diff'
-Plugin 'kana/vim-gf-user'
-Plugin 'kana/vim-operator-replace'
-Plugin 'kana/vim-operator-user'
-Plugin 'kana/vim-submode'
-" {{{ submode
-call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-
-call submode#map('winsize', 'n', '', '>', '<C-w>>')
-call submode#map('winsize', 'n', '', '<', '<C-w><')
-call submode#map('winsize', 'n', '', '+', '<C-w>+')
-call submode#map('winsize', 'n', '', '-', '<C-w>-')
-" }}}
-
-Plugin 'kana/vim-textobj-diff'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'kana/vim-textobj-fold'
-Plugin 'kana/vim-textobj-function'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'kana/vim-textobj-lastpat'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mattn/gist-vim'
-"let g:gist_open_browser_after_post = 1
-
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/wiseman-f-vim'
-Plugin 'motemen/xslate-vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'osyo-manga/shabadou.vim'
-Plugin 'osyo-manga/vim-watchdogs'
-""{{{
-"" watchdog.vim"
-"let g:watchdogs_check_BufWritePost_enables = {
-"      \ "perl" : 1,
-"      \ "javascript" :0
-"      \ }
-"
-"let g:quickrun_config = {
-"      \ "watchdogs_checker/_" : {
-"      \   "runner/vimproc/updatetime" : 40,
-"      \   "outputter/quickfix/open_cmd" : '',
-"      \   "hook/back_window/enable_exit" : 1,
-"      \ },
-"      \ "watchdogs_checker/perl-projectlibs" : {
-"      \   "command" : "perl",
-"      \   "exec" : "%c %o -cw -MProject::Libs %s:p",
-"      \   "quickfix/errorformat": "%m\ at\ %f\ line\ %l%.%#",
-"      \ },
-"      \ "perl/watchdogs_checker" : {
-"      \   "type": "watchdogs_checker/perl-projectlibs",
-"      \ },
-"      \}
-"call watchdogs#setup(g:quickrun_config)
-""}}}
-
-Plugin 'pangloss/vim-javascript'
-Plugin 't9md/vim-textmanip'
-
-"{{{
-" vim-textmanip
-xmap <C-j> <Plug>(textmanip-move-down)
-xmap <C-k> <Plug>(textmanip-move-up)
-xmap <C-h> <Plug>(textmanip-move-left)
-xmap <C-l> <Plug>(textmanip-move-right)
-
-xmap <Space>d <Plug>(textmanip-duplicate-down)
-nmap <Space>d <Plug>(textmanip-duplicate-down)
-xmap <Space>D <Plug>(textmanip-duplicate-up)
-nmap <Space>D <Plug>(textmanip-duplicate-up)
-"}}}
-"
-Plugin 'taka84u9/unite-git'
-Plugin 'thinca/vim-localrc'
-Plugin 'thinca/vim-qfreplace'
-Plugin 'thinca/vim-quickrun'
-Plugin 'thinca/vim-ref'
-
-" {{{ ref.vim
-let g:ref_source_webdict_cmd = 'w3m -dump %s'
-" }}}
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-surround'
-Plugin 'tsukkee/unite-help'
-Plugin 'tsukkee/unite-tag'
-Plugin 'tyru/open-browser.vim'
-"let g:openbrowser_open_filepath_in_vim = 0
-"let g:netrw_nogx = 1 " disable netrw's gx mapping.
-"nmap gx <Plug>(openbrowser-smart-search)
-"vmap gx <Plug>(openbrowser-smart-search)
-
-Plugin 'ujihisa/shadow.vim'
-Plugin 'vim-jp/vimdoc-ja'
-Plugin 'vim-jp/vital.vim'
-Plugin 'vim-scripts/sudo.vim'
-
-Plugin 'git@github.com:soh335/unite-outline-go.git'
-Plugin 'git@github.com:soh335/unite-qflist.git'
-
-Plugin 'fatih/vim-go'
-" let g:go_fmt_command = "goimports"
-
-" Plugin 'vim-perl/vim-perl'
-Plugin 'mrk21/yaml-vim'
-
-"call vundle#end()
 filetype plugin indent on
 
 ""mapping{{{
