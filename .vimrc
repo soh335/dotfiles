@@ -164,7 +164,7 @@ vmap <C-n> %
 "
 
 " 前回終了したカーソル行に移動
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+autocmd BufReadPost * if &filetype != "gitcommit" && line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 autocmd FileType ruby,eruby setl tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType markdown setl tabstop=4 softtabstop=4 shiftwidth=2
