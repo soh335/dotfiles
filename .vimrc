@@ -107,16 +107,20 @@ command! WJis w ++enc=iso-2022-jp | e
 let g:solarized_menu=0
 colorscheme solarized
 
+"ctrlp {{{
 let g:ctrlp_map = '<Nop>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_max_files  = 100000
+let g:ctrlp_clear_cache_on_exit = 0
 nnoremap <silent> <space>ff :<C-u>CtrlP<CR>
 nnoremap <silent> <space>fm :<C-u>CtrlPMRUFiles<CR>
 nnoremap <silent> <space>fb :<C-u>CtrlPBuffer<CR>
-
-filetype plugin indent on
+nnoremap <silent> <space>fd :<C-u>CtrlPDir<CR>
+nnoremap <silent> <space>fc :<C-u>CtrlCurFile<CR>
+" }}}
 
 ""mapping{{{
-"map ¥ \
 "map _  <Plug>(operator-replace)
 nmap j gj
 nmap k gk
