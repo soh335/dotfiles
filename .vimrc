@@ -104,44 +104,6 @@ command! WSjis w ++enc=cp932 | e
 command! WJis w ++enc=iso-2022-jp | e
 " }}}
 
-filetype off
-source $VIMRUNTIME/macros/matchit.vim
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-rails'
-Plug 'dannyob/quickfixstatus'
-Plug 'h1mesuke/vim-alignta'
-Plug 'kana/vim-gf-diff'
-Plug 'kana/vim-gf-user'
-Plug 'kana/vim-operator-replace'
-Plug 'kana/vim-operator-user'
-Plug 'kana/vim-textobj-diff'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-fold'
-Plug 'kana/vim-textobj-function'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-lastpat'
-Plug 'kana/vim-textobj-user'
-Plug 'mattn/webapi-vim'
-Plug 'motemen/xslate-vim'
-Plug 't9md/vim-textmanip'
-Plug 'thinca/vim-localrc'
-Plug 'thinca/vim-qfreplace'
-Plug 'thinca/vim-quickrun'
-Plug 'thinca/vim-ref'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-surround'
-Plug 'vim-jp/vimdoc-ja'
-Plug 'vim-scripts/sudo.vim'
-Plug 'fatih/vim-go'
-Plug 'mrk21/yaml-vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-complete' }
-
-call plug#end()
-
 let g:solarized_menu=0
 colorscheme solarized
 
@@ -220,8 +182,6 @@ endfunction
 autocmd FileType qf call s:QuickFixMap()
 "}}}
 
-
 command! -nargs=1 ChangeIndent setl tabstop=<args> shiftwidth=<args> softtabstop=<args>
 
-""nmap <silent> :  <Plug>(cmdbuf-open-:)
-"let plugin_dicwin_disable = 1
+source $VIMRUNTIME/macros/matchit.vim
