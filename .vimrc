@@ -39,11 +39,11 @@ syntax on
 scriptencoding utf-8
 set encoding=utf-8
 set backspace=indent,eol,start
-set directory=$HOME/.vim/swap
+set directory=$HOME/.vimswap
 if !isdirectory(&directory)
         call mkdir(&directory, 'p')
 end
-set undodir=$HOME/.vim/undo"
+set undodir=$HOME/.vimundo"
 if !isdirectory(&undodir)
         call mkdir(&undodir, 'p')
 end
