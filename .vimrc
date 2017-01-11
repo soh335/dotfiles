@@ -126,7 +126,7 @@ nnoremap <silent> <space>ff :<C-u>CtrlP<CR>
 nnoremap <silent> <space>fm :<C-u>CtrlPMRUFiles<CR>
 nnoremap <silent> <space>fb :<C-u>CtrlPBuffer<CR>
 nnoremap <silent> <space>fd :<C-u>CtrlPDir<CR>
-nnoremap <silent> <space>fc :<C-u>CtrlCurFile<CR>
+nnoremap <silent> <space>fc :<C-u>CtrlPCurFile<CR>
 " }}}
 
 ""mapping{{{
