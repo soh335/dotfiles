@@ -113,6 +113,15 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files  = 100000
 let g:ctrlp_clear_cache_on_exit = 0
+if executable("ag")
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command = {
+        \ 'types': {
+        \ 1: ['.git', 'cd %s && git ls-files']
+        \ },
+        \ 'fallback': 'ag %s -i --nocolor --nogroup -g ""'
+        \ }
+endif
 nnoremap <silent> <space>ff :<C-u>CtrlP<CR>
 nnoremap <silent> <space>fm :<C-u>CtrlPMRUFiles<CR>
 nnoremap <silent> <space>fb :<C-u>CtrlPBuffer<CR>
