@@ -9,3 +9,4 @@ set guioptions-=l
 set guioptions-=L
 set guioptions-=R
 set guioptions+=a
+macmenu Tools.Make key=<nop>
