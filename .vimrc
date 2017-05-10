@@ -111,7 +111,7 @@ colorscheme solarized
 let g:ctrlp_map = '<Nop>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_max_files  = 100000
+let g:ctrlp_max_files  = 1000000
 let g:ctrlp_clear_cache_on_exit = 0
 if executable("ag")
   let g:ctrlp_use_caching = 0
