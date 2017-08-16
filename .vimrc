@@ -117,7 +117,7 @@ if executable("ag")
   let g:ctrlp_use_caching = 0
   let g:ctrlp_user_command = {
         \ 'types': {
-        \ 1: ['.git', 'cd %s && git ls-files']
+        \ 1: ['.git', 'cd %s && git ls-files --exclude-standard --others --cached']
         \ },
         \ 'fallback': 'ag %s -i --nocolor --nogroup -g ""'
         \ }
